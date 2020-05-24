@@ -23,7 +23,7 @@ function drawPixel(x,y) {
   ctx.beginPath();
   ctx.rect(x, y, 1, 1);
   ctx.fill();
-  ctx.closePath();  
+  ctx.closePath();
 }
 
 function drawLine(x0, y0, x1, y1) {
