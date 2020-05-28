@@ -7,11 +7,11 @@ canvas.height = window.innerHeight;
 ctx.fillStyle = "#000000";
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-function setFill(style) {
+function setFillStyle(style) {
   ctx.fillStyle = style;
 }
 
-function setStroke(style) {
+function setStrokeStyle(style) {
   ctx.strokeStyle = style;
 }
 
@@ -66,6 +66,14 @@ function fillRect(x, y, w, h) {
   ctx.closePath();
 }
 
+function setTextAlign(alignment) {
+	ctx.textAlign=alignment;
+}
+
+function setTextBaseline(alignment) {
+	ctx.textBaseline=alignment;
+}
+
 function fillText(text, x, y) {
- ctx.fillText(text, x, y);
+	ctx.fillText(text, x, y);
 }
