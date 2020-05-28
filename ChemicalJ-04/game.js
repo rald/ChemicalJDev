@@ -21,7 +21,7 @@ function draw() {
 
 function main() {
 
-	pad=new Pad("32px sans");
+	pad=new Pad("32px sans",128,canvas.height-192,64,64);
 	player=new Player((canvas.width-16)/2,0,16,32);
 
 	setInterval(draw,1000/60);

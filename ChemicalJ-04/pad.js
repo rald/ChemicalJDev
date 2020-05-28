@@ -1,22 +1,26 @@
-function Pad(font) {
+function Pad(font,x,y,size,gap) {
 	this.state=Pad.NONE;
 	this.font=font;
 	this.buttons=[];
 
-	var x=128,y=canvas.height-192;
+	this.x=x;
+	this.y=y;
+	this.size=size;
+	this.gap=gap;
 
-	this.buttons.push(new Button(font,"",x,y-64,64,64));
-	this.buttons.push(new Button(font,"",x,y+64,64,64));
-	this.buttons.push(new Button(font,"",x-64,y,64,64));
-	this.buttons.push(new Button(font,"",x+64,y,64,64));
 
-	this.buttons.push(new Button(font,"",x-64,y-64,64,64));
-	this.buttons.push(new Button(font,"",x-64,y+64,64,64));
-	this.buttons.push(new Button(font,"",x+64,y+64,64,64));
-	this.buttons.push(new Button(font,"",x+64,y-64,64,64));
+	this.buttons.push(new Button(font,"",x,y-gap,size,size));
+	this.buttons.push(new Button(font,"",x,y+gap,size,size));
+	this.buttons.push(new Button(font,"",x-gap,y,size,size));
+	this.buttons.push(new Button(font,"",x+gap,y,size,size));
 
-	this.buttons.push(new Button(font,"B",canvas.width-256,y,64,64));
-	this.buttons.push(new Button(font,"A",canvas.width-128,y,64,64));
+	this.buttons.push(new Button(font,"",x-gap,y-gap,size,size));
+	this.buttons.push(new Button(font,"",x-gap,y+gap,size,size));
+	this.buttons.push(new Button(font,"",x+gap,y+gap,size,size));
+	this.buttons.push(new Button(font,"",x+gap,y-gap,size,size));
+
+	this.buttons.push(new Button(font,"B",canvas.width-256,y,size,size));
+	this.buttons.push(new Button(font,"A",canvas.width-128,y,size,size));
 
 	this.draw=function() {
 		for(var i=0;i<this.buttons.length;i++) {
