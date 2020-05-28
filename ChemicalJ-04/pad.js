@@ -19,8 +19,8 @@ function Pad(font,x,y,size,gap) {
 	this.buttons.push(new Button(font,"",x+gap,y+gap,size,size));
 	this.buttons.push(new Button(font,"",x+gap,y-gap,size,size));
 
-	this.buttons.push(new Button(font,"B",canvas.width-256,y,size,size));
-	this.buttons.push(new Button(font,"A",canvas.width-128,y,size,size));
+	this.buttons.push(new Button(font,"B",canvas.width-size*4,y,size,size));
+	this.buttons.push(new Button(font,"A",canvas.width-size*2,y,size,size));
 
 	this.draw=function() {
 		for(var i=0;i<this.buttons.length;i++) {
