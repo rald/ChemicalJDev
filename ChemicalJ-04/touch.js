@@ -3,7 +3,6 @@ var mouseY = canvas.height/2;
 var isMouseDown = false;
 
 
-
 canvas.addEventListener("mousedown", function(e) {
   var mousePos = getMousePos(e);
   mouseX = mousePos.x;
