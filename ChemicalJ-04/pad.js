@@ -1,28 +1,45 @@
-function Pad(font,x,y,size,gap) {
+function Pad() {
+	this.font="16px sans";
+	this.size=32;
+	this.gap=32;
 	this.state=Pad.NONE;
-	this.font=font;
 	this.buttons=[];
+	this.x=null;
+	this.y=null;
+	this.data=null;
 
-	this.x=x;
-	this.y=y;
-	this.size=size;
-	this.gap=gap;
+	this.init=function() {
+		this.x=this.gap*2;
+		this.y=canvas.height-this.gap*4;
+		this.data=[
+			{ letter: "",  x: this.x,                   y: this.y-this.gap },
+			{ letter: "",  x: this.x,                   y: this.y+this.gap },
+			{ letter: "",  x: this.x-this.gap,          y: this.y          },
+			{ letter: "",  x: this.x+this.gap,          y: this.y          },
+			{ letter: "",  x: this.x-this.gap,          y: this.y-this.gap },
+			{ letter: "",  x: this.x-this.gap,          y: this.y+this.gap },
+			{ letter: "",  x: this.x+this.gap,          y: this.y+this.gap },
+			{ letter: "",  x: this.x+this.gap,          y: this.y-this.gap },
+			{ letter: "B", x: canvas.width-this.size*4, y: this.y          },
+			{ letter: "A", x: canvas.width-this.size*2, y: this.y          }
+		];
+	}
 
+	this.init();
 
-	this.buttons.push(new Button(font,"",x,y-gap,size,size));
-	this.buttons.push(new Button(font,"",x,y+gap,size,size));
-	this.buttons.push(new Button(font,"",x-gap,y,size,size));
-	this.buttons.push(new Button(font,"",x+gap,y,size,size));
-
-	this.buttons.push(new Button(font,"",x-gap,y-gap,size,size));
-	this.buttons.push(new Button(font,"",x-gap,y+gap,size,size));
-	this.buttons.push(new Button(font,"",x+gap,y+gap,size,size));
-	this.buttons.push(new Button(font,"",x+gap,y-gap,size,size));
-
-	this.buttons.push(new Button(font,"B",canvas.width-size*4,y,size,size));
-	this.buttons.push(new Button(font,"A",canvas.width-size*2,y,size,size));
+	for(var i=0;i<this.data.length;i++) {
+		this.buttons.push(new Button(this.font,this.data[i].letter,this.data[i].x,this.data[i].y,this.size,this.size));
+	}
 
 	this.draw=function() {
+
+		this.init();
+
+		for(var i=0;i<this.buttons.length;i++) {
+			this.buttons[i].x=this.data[i].x;
+			this.buttons[i].y=this.data[i].y;
+		}
+
 		for(var i=0;i<this.buttons.length;i++) {
 			this.buttons[i].draw();
 		}

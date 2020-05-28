@@ -1,12 +1,6 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-ctx.fillStyle = "#000000";
-ctx.fillRect(0, 0, canvas.width, canvas.height);
-
 function setFillStyle(style) {
   ctx.fillStyle = style;
 }
@@ -77,3 +71,15 @@ function setTextBaseline(alignment) {
 function fillText(text, x, y) {
 	ctx.fillText(text, x, y);
 }
+
+function resize() {
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+
+	ctx.fillStyle = "#000000";
+	ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
+
+resize();
+
+window.onresize=resize;
