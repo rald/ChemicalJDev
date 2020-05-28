@@ -37,8 +37,8 @@ function Pad(font) {
 					case 5: pad.state|=Pad.DOWN|Pad.LEFT; break;
 					case 6: pad.state|=Pad.DOWN|Pad.RIGHT; break;
 					case 7: pad.state|=Pad.UP|Pad.RIGHT; break;
-					case 4: pad.state|=Pad.B; break;
-					case 5: pad.state|=Pad.A; break;
+					case 8: pad.state|=Pad.B; break;
+					case 9: pad.state|=Pad.A; break;
 				}
 			}
 		}
