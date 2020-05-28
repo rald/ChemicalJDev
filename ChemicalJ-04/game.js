@@ -76,7 +76,7 @@ function draw() {
 
 function main() {
 
-	pad=new Pad();
+	pad=new Pad("32px sans");
 	player=new Player(0,0);
 
 	setInterval(draw,1000/60);
