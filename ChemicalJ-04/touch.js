@@ -18,4 +18,3 @@ function touchStart(event) {
 canvas.addEventListener("touchend", touchEnd, {passive:false});
 canvas.addEventListener("touchmove", touchMove, {passive:false});
 canvas.addEventListener("touchstart", touchStart, {passive:false});
-
