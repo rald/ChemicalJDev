@@ -17,8 +17,8 @@ function setFont(font) {
 	ctx.font=font;
 }
 
-function fillPixel(x,y,s) {
-  ctx.fillRect(x*s, y*s, s, s);
+function fillPixel(x, y) {
+  ctx.fillRect(x, y, 1, 1);
 }
 
 function drawLine(x0, y0, x1, y1) {
