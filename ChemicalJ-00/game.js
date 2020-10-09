@@ -1,7 +1,11 @@
-var balls=[];
-var numBalls=10;
-var gravity=0.98;
-var epsilon=0.0001
+let fps=60;
+let canvas;
+let ctx;
+
+let size=2;
+let text="Hello World";
+
+let frame=0;
 
 
 
@@ -11,82 +15,45 @@ function rnd(x) {
 
 
 
-function drand() {
-	return Math.random();
+function radians(degrees) {
+	return degrees*Math.PI/180;
 }
 
 
 
-function RGB(r,g,b) {
-	return "rgb("+r+","+g+","+b+")";
-}
+function resize() {
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
 
-
-
-function Ball(x,y,r,color) {
-	this.x=x;
-	this.y=y;
-	this.r=r;
-	this.color=color;
-
-	this.dx=(rnd(2)==0?-1:1)*(drand()*10);
-	this.dy=0;
-
-	this.init=function() {
-		this.y=rnd(canvas.height/2);
-		this.x=rnd(canvas.width);
-		this.dx=(rnd(2)==0?-1:1)*(drand()*10);
-		this.dy=0;
-		this.color=RGB(rnd(256),rnd(256),rnd(256));
-	}
-
-	this.draw=function() {
-		setFill(this.color);
-		setStroke("#FFFFFF");
-		fillCircle(this.x,this.y,16);
-		drawCircle(this.x,this.y,16);
-	}
-
-	this.update=function() {
-
-		this.dy+=gravity;
-
-		this.x+=this.dx;
-		this.y+=this.dy;
-
-		if(this.x<this.r) {
-			this.x=this.r;
-			this.dx=Math.abs(this.dx);
-		}
-
-		if(this.x>canvas.width-this.r) {
-			this.x=canvas.width-this.r;
-			this.dx=-Math.abs(this.dx);
-		}
-
-		if(this.y+this.dx>canvas.height-this.r) {
-			if(Math.abs(this.dy)<epsilon) {
-				this.init();
-			} else {
-				this.y=canvas.height-this.r;
-				this.dy=-Math.abs(this.dy);
-			}
-		}
-
-	}
-
+	draw();
 }
 
 
 
 function draw() {
 
-	setFill("#00000010");
-	fillRect(0,0,canvas.width,canvas.height);
+	Graphics.fillRect(ctx,0,0,canvas.width,canvas.height,palette[0]);
 
-	for(var i=0;i<balls.length;i++) balls[i].draw();
+	Graphics.drawText(ctx,text,0,0,4,font,["transparent",palette[6]]);
 
-	for(var i=0;i<balls.length;i++) balls[i].update();
+	Graphics.drawPoint(ctx,50,125,palette[6]);
+
+	Graphics.drawLine(ctx,100,100,150,150,palette[6]);
+
+	Graphics.drawCircle(ctx,200,125,25,palette[6]);
+
+	Graphics.fillCircle(ctx,275,125,25,palette[6]);
+
+	Graphics.drawRect(ctx,325,100,50,50,palette[6]);
+
+	Graphics.fillRect(ctx,400,100,50,50,palette[6]);
+
+	for(let i=0;i<palette.length;i++) {
+		Graphics.fillRect(ctx,(i%8)*55+30,Math.floor(i/8)*80+180,40,40,palette[i]);
+		Graphics.drawRect(ctx,(i%8)*55+25,Math.floor(i/8)*80+175,50,50,palette[12]);
+		Graphics.drawText(ctx,i.toString(),(i%8)*55+25+(50-font.width*size*i.toString().length)/2,Math.floor(i/8)*80+175+55,size,font,["transparent",palette[12]]);
+	}
+
 
 }
 
@@ -94,16 +61,16 @@ function draw() {
 
 function main() {
 
-	for(var i=0;i<numBalls;i++) {
-		balls.push(new Ball(
-				rnd(canvas.width),rnd(canvas.height/2),16,
-				RGB(rnd(256),rnd(256),rnd(256))
-		));
-	}
+	canvas=document.getElementById("canvas");
+	ctx=canvas.getContext("2d");
+	
+	resize();
 
-	setInterval(draw,1000/60);
+	window.onresize=resize;
+
 }
-
-
+		
+		
 
 main();
+

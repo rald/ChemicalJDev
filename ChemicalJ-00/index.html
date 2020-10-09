@@ -1,20 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<title>ChemicalJ</title>
+		<style>
+			html,body {
+				margin:   0px;
+				padding:  0px;
+				width:    100%;
+				height:   100%;
+				overflow: hidden;
+				overscroll-behavior: none;
+			}
+		</style>
+	</head>
+	<body>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>HTML</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+		<canvas id="canvas"></canvas>
 
-<body>
-  <canvas id="canvas"></canvas>
-
-  <script src="graphics.js"></script>
-  <script src="game.js"></script>
-
-</body>
-
+		<script src="palette.js"></script>
+		<script src="font.js"></script>
+		<script src="graphics.js"></script>
+		<script src="game.js"></script>
+		
+	</body>
 </html>
