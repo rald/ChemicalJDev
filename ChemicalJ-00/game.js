@@ -1,12 +1,14 @@
-let fps=60;
 let canvas;
 let ctx;
+
+let fps=60;
 
 let size=2;
 let text="Hello World";
 
-let frame=0;
+let x,y;
 
+let frame;
 
 
 function rnd(x) {
@@ -24,8 +26,6 @@ function radians(degrees) {
 function resize() {
 	canvas.width = window.innerWidth;
 	canvas.height = window.innerHeight;
-
-	draw();
 }
 
 
@@ -34,7 +34,10 @@ function draw() {
 
 	Graphics.fillRect(ctx,0,0,canvas.width,canvas.height,palette[0]);
 
-	Graphics.drawText(ctx,text,0,0,4,font,["transparent",palette[6]]);
+	x=(canvas.width-text.length*font.width*size)/2+Math.cos(frame/30)*200;
+	y=16;
+
+	Graphics.drawText(ctx,text,x,y,size,font,["transparent",palette[6]]);
 
 	Graphics.drawPoint(ctx,50,125,palette[6]);
 
@@ -54,6 +57,7 @@ function draw() {
 		Graphics.drawText(ctx,i.toString(),(i%8)*55+25+(50-font.width*size*i.toString().length)/2,Math.floor(i/8)*80+175+55,size,font,["transparent",palette[12]]);
 	}
 
+	frame++;
 
 }
 
@@ -67,6 +71,10 @@ function main() {
 	resize();
 
 	window.onresize=resize;
+
+	frame=0;
+
+	setInterval(draw,1000/fps);
 
 }
 		
