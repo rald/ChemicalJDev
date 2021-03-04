@@ -4,7 +4,7 @@ let ctx;
 let fps=60;
 
 let size=2;
-let text="Hello World";
+let text="Graphics Test";
 
 let x,y;
 
@@ -37,24 +37,24 @@ function draw() {
 	x=(canvas.width-text.length*font.width*size)/2+Math.cos(frame/30)*200;
 	y=16;
 
-	Graphics.drawText(ctx,text,x,y,size,font,["transparent",palette[6]]);
+	Graphics.drawText(ctx,text,x,y,size,font,["transparent",palette[7]]);
 
-	Graphics.drawPoint(ctx,50,125,palette[6]);
+	Graphics.drawPoint(ctx,50,125,palette[7]);
 
-	Graphics.drawLine(ctx,100,100,150,150,palette[6]);
+	Graphics.drawLine(ctx,100,100,150,150,palette[7]);
 
-	Graphics.drawCircle(ctx,200,125,25,palette[6]);
+	Graphics.drawCircle(ctx,200,125,25,palette[7]);
 
-	Graphics.fillCircle(ctx,275,125,25,palette[6]);
+	Graphics.fillCircle(ctx,275,125,25,palette[7]);
 
-	Graphics.drawRect(ctx,325,100,50,50,palette[6]);
+	Graphics.drawRect(ctx,325,100,50,50,palette[7]);
 
-	Graphics.fillRect(ctx,400,100,50,50,palette[6]);
+	Graphics.fillRect(ctx,400,100,50,50,palette[7]);
 
 	for(let i=0;i<palette.length;i++) {
 		Graphics.fillRect(ctx,(i%8)*55+30,Math.floor(i/8)*80+180,40,40,palette[i]);
-		Graphics.drawRect(ctx,(i%8)*55+25,Math.floor(i/8)*80+175,50,50,palette[12]);
-		Graphics.drawText(ctx,i.toString(),(i%8)*55+25+(50-font.width*size*i.toString().length)/2,Math.floor(i/8)*80+175+55,size,font,["transparent",palette[12]]);
+		Graphics.drawRect(ctx,(i%8)*55+25,Math.floor(i/8)*80+175,50,50,palette[palette.length-1]);
+		Graphics.drawText(ctx,i.toString(),(i%8)*55+25+(50-font.width*size*i.toString().length)/2,Math.floor(i/8)*80+175+55,size,font,["transparent",palette[palette.length-1]]);
 	}
 
 	frame++;
